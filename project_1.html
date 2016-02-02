@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>D3 Test</title>
+        <script type="text/javascript" src="d3/d3.js"></script>
+        <style>
+            div.bar {
+                display: inline-block;
+                width: 20px;
+                height: 75px;
+                background-color: teal;
+                margin-right: 2px;
+            }
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+           
+            //http://alignedleft.com/tutorials/d3/the-power-of-data
+            var dataset = [];
+            for (var i = 0; i < 25; i++) {
+                var n = Math.round(Math.random() * 30);
+                dataset.push(n);
+            }
+            
+            d3.select("body").selectAll("div")
+                .data(dataset)
+                .enter()
+                .append("div")
+                .attr("class", "bar")
+                .style("height", function(d) {
+                    var barHeight = d * 5; //scale up by factor of 5
+                    return barHeight + "px";
+                });
+                
+           //http://alignedleft.com/tutorials/d3/using-your-data 
+           /* d3.select("body")
+                .selectAll("p")
+                .data(dataset)
+                .enter()
+                .append("p")
+                .text(function(d) { 
+                    return "I can count up to " + d; 
+                })
+                .style("color", function(d) {
+                    if (d > 15) {
+                        return "red";
+                    } else {
+                        return "black";
+                    }
+                });
+                */
+        </script>
+    </body>
+</html>
